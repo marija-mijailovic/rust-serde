@@ -2,7 +2,7 @@ use serde::de::{Deserialize, MapAccess, Visitor};
 use serde::ser::{Serialize, SerializeStruct};
 
 struct Token {
-    id: i32,
+    id: u32,
     name: String,
     process: bool,
 }
@@ -91,13 +91,13 @@ impl std::fmt::Display for Token {
 }
 
 fn main() {
-    let candidate = Token {
+    let token = Token {
         id: 1,
         name: "Marija".to_owned(),
         process: true,
     };
 
-    let serialize = serde_json::to_string(&candidate).unwrap();
+    let serialize = serde_json::to_string(&token).unwrap();
     println!("{}", serialize);
 
     let deserialize: Token = serde_json::from_str(&serialize).unwrap();
